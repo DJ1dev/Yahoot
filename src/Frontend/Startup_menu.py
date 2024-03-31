@@ -1,14 +1,24 @@
+import sys
+from pathlib import Path
+root_path = Path(__file__).resolve().parent.parent
+sys.path.append(str(root_path))
+
+
+from Backend import useraccount
 from time import sleep
 
-def Login_page():
+
+
+def Login_page():                                                                               #handles The log in page
     print("\n[---Log in---]")
 
     username = input("Username :\t")
     password = input("Password :\t")
     
-    print("\nLogged in")
+    useraccount.Account_Verify(username, password)
 
-def SignUp_page():
+
+def SignUp_page():                                                                              #handles The Sign up page
     print("\n[---Sign up---]")
 
     username = input("Username :\t")
