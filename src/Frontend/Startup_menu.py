@@ -4,7 +4,7 @@ root_path = Path(__file__).resolve().parent.parent
 sys.path.append(str(root_path))
 
 
-from Backend import useraccount
+from Backend import useraccount, text_format
 from time import sleep
 
 
@@ -14,8 +14,11 @@ def Login_page():                                                               
 
     username = input("Username :\t")
     password = input("Password :\t")
+    text_format.admin_formatting(username)
+    text_format.admin_formatting(password)
     
     useraccount.Account_Verify(username, password)
+
 
 
 def SignUp_page():                                                                              #handles The Sign up page
@@ -23,8 +26,10 @@ def SignUp_page():                                                              
 
     username = input("Username :\t")
     password = input("Password :\t")
-    
-    print("\nSuccessful")
+    text_format.admin_formatting(username)
+    text_format.admin_formatting(password)
+
+    useraccount.Add_Accounts(username, password)
 
 
 def startmenu():
