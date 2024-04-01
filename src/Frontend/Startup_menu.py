@@ -7,6 +7,7 @@ sys.path.append(str(root_path))
 from Backend import useraccount, text_format
 from time import sleep
 
+import Main_menu
 
 
 def Login_page():                                                                               #handles The log in page
@@ -14,27 +15,33 @@ def Login_page():                                                               
 
     username = input("Username :\t")
     password = input("Password :\t")
-    text_format.admin_formatting(username)
-    text_format.admin_formatting(password)
     
-    useraccount.Account_Verify(username, password)
-
+    if useraccount.Account_Verify(text_format.admin_formatting(username), password) == True:
+        print('Successfull Login')
+        Main_menu.logged_Menu(username)
+    else:
+        print('Invalid Username or Password, Please try again or Sign up')
 
 
 def SignUp_page():                                                                              #handles The Sign up page
     print("\n[---Sign up---]")
 
     username = input("Username :\t")
-    password = input("Password :\t")
-    text_format.admin_formatting(username)
-    text_format.admin_formatting(password)
-
-    useraccount.Add_Accounts(username, password)
+    while True:
+        password = input("Password :\t")
+        if len(password) >= 5:
+            if useraccount.Add_Accounts(text_format.admin_formatting(username), password) == True:
+                print('Succesfully Registered')
+                break
+        else:
+            print('The password is too short \n')
+    
+    
 
 
 def startmenu():
     while True:
-        operation_choice = input("[---Menu---]\n1: Log In\n2: Sign Up\n3:Exit\nAnswer:\t")
+        operation_choice = input("\n[---Menu---]\n1: Log In\n2: Sign Up\n3: Exit\nAnswer:\t")
         if operation_choice == "1" or operation_choice ==  "Log in":
             Login_page()
             break
@@ -42,15 +49,17 @@ def startmenu():
             SignUp_page()
             break
         elif operation_choice == "3" or operation_choice ==  "Exit":
-            print("Come Back Soon")
-            break
+            return False
         else:
             print("Invalid option, please enter the corresponding option's number")
 
 
 print("Welcome Student")
 sleep(0.5)
-print("Please Choose an option lsited below \n")
+print("Please Choose an option listed below")
 sleep(0.5)
 
-startmenu()
+while True:
+    if startmenu() == False:
+        print("Come Back Soon")
+        break
