@@ -18,10 +18,10 @@ def Login_page():                                                               
     
     if useraccount.Account_Verify(text_format.admin_formatting(username), password) == True:
         print('Successfull Login')
-        Main_menu.logged_Menu(username)
+        Main_menu.logged_Menu(text_format.admin_formatting(username))
     else:
         print('Invalid Username or Password, Please try again or Sign up')
-
+        
 
 def SignUp_page():                                                                              #handles The Sign up page
     print("\n[---Sign up---]")
@@ -35,7 +35,7 @@ def SignUp_page():                                                              
                 break
         else:
             print('The password is too short \n')
-    
+
     
 
 

@@ -1,7 +1,15 @@
-from Backend import useraccount
+from Backend import useraccount, Hangman, text_format
 
 def Play_mode():
-    print('Playing')
+    Game_Choice = input("\nSelect The Game Mode:\n1: Hangman\n2: Word Matching\nAnswer:\t")
+    if text_format.admin_formatting(Game_Choice) == '1':
+        game_result = Hangman.Setup()
+        if game_result[0] == True:
+            
+    elif text_format.admin_formatting(Game_Choice) == '2':
+        pass
+    else:
+        print("Invalid Input, please try again")
 
 def Leaderboard():
     print("\n[---Leaderboard---]")
