@@ -1,11 +1,11 @@
 from Backend import useraccount, Hangman, text_format
 
-def Play_mode():
+def Play_mode(username):
     Game_Choice = input("\nSelect The Game Mode:\n1: Hangman\n2: Word Matching\nAnswer:\t")
     if text_format.admin_formatting(Game_Choice) == '1':
         game_result = Hangman.Setup()
         if game_result[0] == True:
-            
+            useraccount.point_management(username, game_result[1])
     elif text_format.admin_formatting(Game_Choice) == '2':
         pass
     else:
@@ -14,6 +14,7 @@ def Play_mode():
 def Leaderboard():
     print("\n[---Leaderboard---]")
     for x in useraccount.Scan_Accounts():
+        print(x)
         print(x[0].capitalize(),x[1])
 
 def logged_Menu(username):
@@ -23,7 +24,7 @@ def logged_Menu(username):
         if operation_choice == '1' or operation_choice == 'Leaderboard':
             Leaderboard()
         elif operation_choice == '2' or operation_choice == 'Play':
-            Play_mode()
+            Play_mode(username)
         elif operation_choice == '3' or operation_choice == 'Log Out':
             break
         else:

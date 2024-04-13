@@ -117,25 +117,25 @@ def Setup():
             if  game_results[0]== True:
                 return True, game_results[1]
             else:
-                break
+                return False
         elif Category_choice == '2':
             game_results = Game(difficultylevel('Computer Science'))
             if game_results[0] == True:
                 return True, game_results[1]
             else:
-                break
+                return False
         elif Category_choice == '3':
             game_results = Game(difficultylevel('History'))
             if game_results[0] == True:
                 return True, game_results[1]
             else:
-                break
+                return False
         elif Category_choice == '4':
             game_results = Game(difficultylevel('Math'))
             if game_results[0] == True:
                 return True, game_results[1]
             else:
-                break
+                return False
         elif Category_choice == '5':
             break
         else:
