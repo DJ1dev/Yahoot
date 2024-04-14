@@ -76,7 +76,6 @@ hanged_man = [
 
 # Function to start the Hangman game
 def Game(words):
-    print(words)
     print("[---Hangman---]\nGuess the Word below:")
 
     achievable_points = words[1]
@@ -88,7 +87,6 @@ def Game(words):
     for character in words[0][random.randrange(len(words))]:
         word_placeholder += '_'
         word += character.lower()
-    print(word.capitalize())
     
     while True:
         # Check if there are still letters to guess and if attempts are remaining
@@ -111,7 +109,7 @@ def Game(words):
                     tries+=1
         # If attempts are exhausted, end game and display the correct word
         elif tries >= -1:
-            print("You Failed, The word was: "+ word.capitalize())
+            print("Incorrect, The word was: "+ word.capitalize())
             print("Please Try again")
             return False
         else: 
@@ -158,4 +156,3 @@ def Setup():
             break
         else:
             print("Invalid option, please enter the corresponding option's number\n")
-
