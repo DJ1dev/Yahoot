@@ -33,6 +33,6 @@ def Account_Verify(username, password):                                         
 
 def Add_Accounts(username, password):                                            #Function used to Create new Accounts in storage file
     with open(r"Python/School/Yahoot/src/Storage/Accounts.txt", 'a') as file:
-        file.write('\n' + str(username) + ' ' + str(password) + ' ' + '0')       #Adds the new user's details to a new line in the text file
+        file.write(str(username) + ' ' + str(password) + ' ' + '0\n')       #Adds the new user's details to a new line in the text file
         return True
 

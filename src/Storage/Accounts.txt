@@ -1,3 +1,6 @@
 adam 2134 210
 mike 1234 540
-mika 123456 40
+rika 123456 40
+daniel 123456# 0
+tony 123456# 10
+martha 12345# 20

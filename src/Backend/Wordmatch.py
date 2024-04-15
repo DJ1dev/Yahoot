@@ -64,7 +64,7 @@ def Game(questions):
                 return True, achievable_points
             else:
                 print("Incorrect, The answer is: " + str(selected_word) +"\n") 
-                return False
+                return False, False
         except ValueError:
            print("Invalid option, please enter the definition's option's number")
 

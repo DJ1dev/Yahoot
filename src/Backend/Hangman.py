@@ -18,7 +18,7 @@ def difficultylevel(category):
         achievable_points = 30
     else:
         print("Invalid option, please enter the corresponding option's number")
-    
+
     words = []
 
     # Read words from file and store them in a list
@@ -29,7 +29,7 @@ def difficultylevel(category):
             words.append(info[0])
         return words, achievable_points
 
-# Hangman stages represented as ASCII art
+# Hangman stages represented as Command line art
 hanged_man = [
     """
       +-----+
@@ -67,11 +67,32 @@ hanged_man = [
       =========
     """
     ,
-    "      +-----+\n      |     O\n      |    /|\ \n      |   \n      | \n      ========="
+    """
+      +-----+
+      |     O
+      |    /|\\
+      |    
+      |
+      =========
+    """
     ,
-    "      +-----+\n      |     O\n      |    /|\ \n      |    /\n      | \n      ========="
+    """
+      +-----+
+      |     O
+      |    /|\\
+      |    /
+      |
+      =========
+    """
     ,
-    "      +-----+\n      |     O\n      |    /|\ \n      |    / \ \n      | \n      ========="
+    """
+      +-----+
+      |     O
+      |    /|\\
+      |    / \\
+      |
+      =========
+    """
 ]
 
 # Function to start the Hangman game
@@ -109,14 +130,15 @@ def Game(words):
                     tries+=1
         # If attempts are exhausted, end game and display the correct word
         elif tries >= -1:
+            print(hanged_man[-1])  
             print("Incorrect, The word was: "+ word.capitalize())
             print("Please Try again")
-            return False
+            return False, False
         else: 
-            # If all letters are guessed correctly, congratulate player and display points
+            # If all letters are guessed correctly, congratulate player, display and award points
             print(word.capitalize())
             print("Congrats, you successfully spelt the world\n" + str(achievable_points)+ " points awarded\n")
-            return True, achievable_points
+            return True, achievable_points              
             
  
 # Function to set up the Hangman game
@@ -130,24 +152,28 @@ def Setup():
         # Start game based on user's category choice
         if Category_choice == '1':
             game_results = Game(difficultylevel('Art'))
+            #Checks if player won or lost
             if  game_results[0]== True:
                 return True, game_results[1]
             else:
                 return False
         elif Category_choice == '2':
             game_results = Game(difficultylevel('Computer Science'))
+            #Checks if player won or lost
             if game_results[0] == True:
                 return True, game_results[1]
             else:
                 return False
         elif Category_choice == '3':
             game_results = Game(difficultylevel('History'))
+            #Checks if player won or lost
             if game_results[0] == True:
                 return True, game_results[1]
             else:
                 return False
         elif Category_choice == '4':
             game_results = Game(difficultylevel('Math'))
+            #Checks if player won or lost
             if game_results[0] == True:
                 return True, game_results[1]
             else:
@@ -156,3 +182,4 @@ def Setup():
             break
         else:
             print("Invalid option, please enter the corresponding option's number\n")
+
